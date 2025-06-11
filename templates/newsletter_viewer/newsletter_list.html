@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Newsletter Archive</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            animation: slideInUp 0.8s ease-out;
+        }
+
+        /* Desktop/Laptop specific styles */
+        @media (min-width: 768px) {
+            body {
+                padding: 30px;
+            }
+            
+            .container {
+                max-width: 1000px;
+                padding: 50px 60px;
+            }
+            
+            .logo {
+                font-size: 36px;
+                margin-bottom: 15px;
+            }
+            
+            .newsletter-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                gap: 25px;
+            }
+            
+            .newsletter-card {
+                padding: 30px;
+            }
+            
+            .newsletter-date {
+                font-size: 26px;
+            }
+            
+            .user-info {
+                padding: 20px 25px;
+                margin-bottom: 40px;
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+            background-size: 200% 200%;
+            animation: logoGradient 8s ease infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        @keyframes logoGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .user-info {
+            background: #f8f9ff;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .user-welcome {
+            color: #333;
+            font-weight: 500;
+        }
+
+        .logout-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+        }
+
+        .newsletter-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .newsletter-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+            border: 2px solid #e1e5e9;
+            border-radius: 16px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-color: #667eea;
+        }
+
+        .newsletter-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+            transition: width 0.3s ease;
+        }
+
+        .newsletter-card:hover:before {
+            width: 8px;
+        }
+
+        .newsletter-date {
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .newsletter-meta {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .newsletter-preview {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .read-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .read-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .no-newsletters {
+            text-align: center;
+            color: #666;
+            font-size: 18px;
+            padding: 60px 20px;
+        }
+
+        .no-newsletters .icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        .alert {
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-weight: 500;
+        }
+
+        .alert.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .alert.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }        @media (max-width: 767px) {
+            body {
+                padding: 15px;
+            }
+            
+            .container {
+                padding: 25px 20px;
+                margin: 10px;
+                border-radius: 15px;
+            }
+            
+            .logo {
+                font-size: 26px;
+            }
+            
+            .user-info {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+                padding: 15px;
+                margin-bottom: 25px;
+            }
+            
+            .user-welcome {
+                font-size: 14px;
+            }
+            
+            .logout-btn {
+                padding: 8px 16px;
+                font-size: 13px;
+            }
+            
+            .newsletter-grid {
+                gap: 15px;
+            }
+            
+            .newsletter-card {
+                padding: 20px;
+            }
+            
+            .newsletter-date {
+                font-size: 20px;
+            }
+            
+            .newsletter-meta {
+                font-size: 13px;
+            }
+            
+            .newsletter-preview {
+                font-size: 14px;
+                line-height: 1.5;
+            }
+            
+            .read-btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">AI Newsletter Archive</div>
+        </div>
+
+        <div class="user-info">
+            <div class="user-welcome">
+                Welcome back, {{ session.email }}!
+            </div>
+            <a href="/logout" class="logout-btn">Logout</a>
+        </div>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert {{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% if newsletters %}
+            <div class="newsletter-grid">
+                {% for newsletter in newsletters %}
+                <div class="newsletter-card">
+                    <div class="newsletter-date">{{ newsletter.display_date }}</div>
+                    <div class="newsletter-meta">
+                        AI Newsletter • Top 5 Stories • 5 min read
+                    </div>
+                    <div class="newsletter-preview">
+                        Daily curated AI and technology news with AI-powered summaries. 
+                        Stay updated with the latest developments in artificial intelligence, 
+                        tech startups, and industry insights.
+                    </div>
+                    <a href="/newsletter/{{ newsletter.filename }}" class="read-btn">
+                        Read Newsletter →
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="no-newsletters">
+                <div class="icon">📰</div>
+                <h3>No newsletters available yet</h3>
+                <p>Check back soon for the latest AI & tech news!</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

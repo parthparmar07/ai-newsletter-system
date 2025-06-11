@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 Daily AI Brief - Wednesday, June 11: Top 5 Tech Stories</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.5;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            padding: 20px 10px;
+            min-height: 100vh;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+          .container {
+            max-width: 650px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            animation: slideInUp 0.8s ease-out;
+        }
+
+        /* Desktop/Laptop specific styles */
+        @media (min-width: 768px) {
+            body {
+                padding: 30px 20px;
+            }
+            
+            .container {
+                max-width: 750px;
+                border-radius: 20px;
+            }
+            
+            .header {
+                padding: 40px 30px 25px;
+            }
+            
+            .header h1 {
+                font-size: 32px;
+                margin-bottom: 6px;
+            }
+            
+            .header .date {
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            
+            .header .subtitle {
+                font-size: 16px;
+            }
+            
+            .content {
+                padding: 30px;
+            }
+            
+            .intro {
+                padding: 25px;
+                margin-bottom: 30px;
+                font-size: 16px;
+            }
+            
+            .section-header {
+                font-size: 22px;
+                margin: 30px 0 20px 0;
+                padding-bottom: 10px;
+            }
+            
+            .article {
+                padding: 25px;
+                margin-bottom: 20px;
+            }
+            
+            .article-title {
+                font-size: 18px;
+                margin-bottom: 6px;
+            }
+            
+            .article-meta {
+                font-size: 13px;
+                margin-bottom: 10px;
+            }
+            
+            .article-summary {
+                font-size: 15px;
+                line-height: 1.7;
+            }
+            
+            .footer {
+                padding: 40px 30px;
+            }
+            
+            .creator-name {
+                font-size: 20px;
+                margin-bottom: 6px;
+            }
+            
+            .creator-title {
+                font-size: 15px;
+                margin-bottom: 20px;
+            }
+            
+            .social-link {
+                padding: 10px 20px;
+                font-size: 13px;
+                margin: 0 8px;
+            }
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-size: 200% 200%;
+            animation: headerGradient 8s ease infinite;
+            color: white;
+            padding: 30px 24px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        @keyframes headerGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 6s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(180deg); }
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 0 2px 10px rgba(255,255,255,0.3), 0 0 20px rgba(255,255,255,0.2); }
+            to { text-shadow: 0 2px 10px rgba(255,255,255,0.5), 0 0 30px rgba(255,255,255,0.4); }
+        }
+        
+        .header .date {
+            font-size: 14px;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 8px;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+        
+        .header .subtitle {
+            font-size: 14px;
+            color: rgba(255,255,255,0.8);
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+          
+        .content {
+            padding: 24px;
+        }        .intro {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #ff9a9e 100%);
+            background-size: 200% 200%;
+            animation: introGradient 10s ease infinite;
+            color: white;
+            padding: 20px;
+            margin-bottom: 24px;
+            font-size: 15px;
+            line-height: 1.5;
+            border-radius: 12px;
+            animation: slideInLeft 1s ease-out 0.5s both, introGradient 10s ease infinite;
+            box-shadow: 0 8px 25px rgba(240, 147, 251, 0.4);
+        }
+        
+        @keyframes introGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+          .section-header {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin: 24px 0 16px 0;
+            padding-bottom: 8px;
+            border-bottom: 3px solid transparent;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb) bottom/100% 3px no-repeat;
+            background-size: 200% 3px;
+            animation: slideInRight 1s ease-out 0.7s both, sectionGradient 6s ease infinite;
+        }
+        
+        @keyframes sectionGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .articles-grid {
+            display: grid;
+            gap: 16px;
+        }
+          .article {
+            border-bottom: 1px solid #f1f3f4;
+            padding: 20px;
+            margin-bottom: 16px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease-out both;
+            animation-delay: calc(var(--article-index) * 0.1s);
+            border-left: 4px solid transparent;
+        }
+          .article:nth-child(1) { --article-index: 1; border-left-color: #ff6b6b; box-shadow: 0 4px 15px rgba(255, 107, 107, 0.2); }
+        .article:nth-child(2) { --article-index: 2; border-left-color: #4ecdc4; box-shadow: 0 4px 15px rgba(78, 205, 196, 0.2); }
+        .article:nth-child(3) { --article-index: 3; border-left-color: #45b7d1; box-shadow: 0 4px 15px rgba(69, 183, 209, 0.2); }
+        .article:nth-child(4) { --article-index: 4; border-left-color: #96ceb4; box-shadow: 0 4px 15px rgba(150, 206, 180, 0.2); }
+        .article:nth-child(5) { --article-index: 5; border-left-color: #feca57; box-shadow: 0 4px 15px rgba(254, 202, 87, 0.2); }
+        
+        .article:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-left-width: 6px;
+        }
+        
+        .article:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 20px;
+        }
+          .article-number {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+            background-size: 200% 200%;
+            animation: bounce 2s infinite, numberGradient 8s ease infinite;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-weight: 600;
+            font-size: 14px;
+            margin-right: 12px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        @keyframes numberGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        .article-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            line-height: 1.4;
+            color: #24292f;
+        }
+        
+        .article-title a {
+            color: #24292f;
+            text-decoration: none;
+        }
+          .article-title a:hover {
+            color: #667eea;
+            text-decoration: underline;
+            text-shadow: 0 0 8px rgba(102, 126, 234, 0.3);
+        }
+        
+        .article-meta {
+            font-size: 12px;
+            color: #656d76;
+            margin-bottom: 8px;
+            opacity: 0.8;
+        }
+        
+        .article-summary {
+            color: #555;
+            line-height: 1.6;
+            font-size: 14px;
+        }        .footer {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-size: 200% 200%;
+            animation: slideInUp 1s ease-out 1.5s both, footerGradient 12s ease infinite;
+            color: white;
+            padding: 30px 24px;
+            text-align: center;
+        }
+        
+        @keyframes footerGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .creator-info {
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease-out 2s both;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .creator-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .creator-title {
+            color: rgba(255,255,255,0.9);
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .creator-links {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 16px 0;
+        }
+        
+        .social-link {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 25px;
+            color: white;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .social-link:hover {
+            background: rgba(255,255,255,0.3);
+            border-color: rgba(255,255,255,0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .footer-note {
+            font-size: 12px;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.4;
+            margin-top: 20px;
+        }
+          @media (max-width: 767px) {
+            body {
+                padding: 15px 8px;
+            }
+            
+            .container {
+                border-radius: 12px;
+            }
+            
+            .header {
+                padding: 25px 20px 18px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+                margin-bottom: 4px;
+            }
+            
+            .header .date {
+                font-size: 13px;
+                margin-bottom: 6px;
+            }
+            
+            .header .subtitle {
+                font-size: 13px;
+            }
+            
+            .content {
+                padding: 20px 18px;
+            }
+            
+            .intro {
+                padding: 18px;
+                margin-bottom: 20px;
+                font-size: 14px;
+                border-radius: 10px;
+            }
+            
+            .section-header {
+                font-size: 18px;
+                margin: 20px 0 14px 0;
+                padding-bottom: 6px;
+            }
+            
+            .article {
+                padding: 18px;
+                margin-bottom: 14px;
+                border-radius: 10px;
+            }
+            
+            .article-number {
+                width: 24px;
+                height: 24px;
+                line-height: 24px;
+                font-size: 12px;
+                margin-right: 10px;
+            }
+            
+            .article-title {
+                font-size: 15px;
+                margin-bottom: 4px;
+                line-height: 1.3;
+            }
+            
+            .article-meta {
+                font-size: 11px;
+                margin-bottom: 8px;
+            }
+            
+            .article-summary {
+                font-size: 13px;
+                line-height: 1.5;
+            }
+            
+            .footer {
+                padding: 25px 18px;
+            }
+            
+            .creator-name {
+                font-size: 16px;
+                margin-bottom: 4px;
+            }
+            
+            .creator-title {
+                font-size: 13px;
+                margin-bottom: 14px;
+            }
+            
+            .creator-links {
+                gap: 8px;
+                margin: 14px 0;
+                flex-wrap: wrap;
+            }
+            
+            .social-link {
+                font-size: 11px;
+                padding: 6px 12px;
+                margin: 2px;
+            }
+            
+            .footer-note {
+                font-size: 11px;
+                margin-top: 18px;
+                line-height: 1.3;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">    </style>
+</head>
+<body>
+    <div class="container">        <div class="header">
+            <div class="header-content">
+                <h1>Daily AI Brief</h1>
+                <div class="date">June 11, 2025</div>
+                <div class="subtitle">Your Daily AI Intelligence Brief</div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="intro">
+                Today's most important tech developments.
+            </div>
+            
+            <div class="section-header">Today's Top Stories</div>
+            
+            <div class="articles-grid">
+                
+                <div class="article">
+                    <div class="article-number">1</div>
+                    <div class="article-title">
+                        <a href="https://venturebeat.com/games/logitech-unveils-flip-folio-case-and-keyboard-for-ipad-pro-and-ipad-air/" target="_blank">Logitech unveils Flip Folio case and keyboard for iPad Pro and iPad Air</a>
+                    </div>
+                    <div class="article-meta">
+                        VentureBeat • Jun 11
+                    </div>
+                    <div class="article-summary">
+                        Logitech announced the Flip Folio, a protective case with a magnetically-storable keyboard for iPad Pro and iPad Air....
+                    </div>
+                </div>
+                
+                <div class="article">
+                    <div class="article-number">2</div>
+                    <div class="article-title">
+                        <a href="https://venturebeat.com/ai/openai-launches-o3-pro-ai-model-offering-increased-reliability-and-tool-use-for-enterprises-while-sacrificing-speed/" target="_blank">OpenAI launches o3-pro AI model, offering increased reliability and tool use for enterprises — while sacrificing speed</a>
+                    </div>
+                    <div class="article-meta">
+                        VentureBeat • Jun 10
+                    </div>
+                    <div class="article-summary">
+                        OpenAI released the latest in its o-series of reasoning model that promises more reliable and accurate responses for enterprises....
+                    </div>
+                </div>
+                
+                <div class="article">
+                    <div class="article-number">3</div>
+                    <div class="article-title">
+                        <a href="https://venturebeat.com/ai/alphaone-gives-ai-developers-a-new-dial-to-control-llm-thinking-and-boost-performance/" target="_blank">AlphaOne gives AI developers a new dial to control LLM ‘thinking’ and boost performance</a>
+                    </div>
+                    <div class="article-meta">
+                        VentureBeat • Jun 10
+                    </div>
+                    <div class="article-summary">
+                        A new framework called AlphaOne is a novel way to modulate LLM thinking, improving model accuracy and efficiency without costly retraining....
+                    </div>
+                </div>
+                
+                <div class="article">
+                    <div class="article-number">4</div>
+                    <div class="article-title">
+                        <a href="https://venturebeat.com/ai/openai-announces-80-price-drop-for-o3-its-most-powerful-reasoning-model/" target="_blank">OpenAI announces 80% price drop for o3, it’s most powerful reasoning model</a>
+                    </div>
+                    <div class="article-meta">
+                        VentureBeat • Jun 10
+                    </div>
+                    <div class="article-summary">
+                        It could benefit startups, research teams, and individual developers who previously found higher-tier model access cost-prohibitive....
+                    </div>
+                </div>
+                
+                <div class="article">
+                    <div class="article-number">5</div>
+                    <div class="article-title">
+                        <a href="https://techcrunch.com/2025/06/11/sam-altman-thinks-ai-will-have-novel-insights-next-year/" target="_blank">Sam Altman thinks AI will have ‘novel insights’ next year</a>
+                    </div>
+                    <div class="article-meta">
+                        AI News & Artificial Intelligence | TechCrunch • Jun 11
+                    </div>
+                    <div class="article-summary">
+                        In a new essay published Tuesday called &#8220;The Gentle Singularity,&#8221; OpenAI CEO Sam Altman shared his latest vision for how AI will change the human experience over the next 15 years. The ess...
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="creator-info">
+                <div class="creator-name">Parth Parmar</div>
+                <div class="creator-title">AI Newsletter Creator & Tech Enthusiast</div>
+                <div class="creator-links">
+                    <a href="mailto:parthparmar4105@gmail.com" class="social-link">Email</a>
+                    <a href="https://www.linkedin.com/in/parthparmar04/" class="social-link" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/parthparmar07" class="social-link" target="_blank">GitHub</a>
+                    <a href="https://parth-parmar-portfolio.onrender.com/" class="social-link" target="_blank">Portfolio</a>
+                </div>
+            </div>
+              <div class="footer-note">
+                <strong>Daily AI Brief</strong> • Curated by AI • 
+                <a href="mailto:parthparmar4105@gmail.com" style="color: rgba(255,255,255,0.9); text-decoration: underline;">Reply to unsubscribe</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

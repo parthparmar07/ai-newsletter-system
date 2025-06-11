@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to AI Newsletter!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 550px;
+            width: 100%;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            animation: slideInUp 0.8s ease-out;
+            text-align: center;
+        }
+
+        /* Desktop/Laptop specific styles */
+        @media (min-width: 768px) {
+            body {
+                padding: 30px;
+            }
+            
+            .container {
+                max-width: 650px;
+                padding: 50px 60px;
+            }
+            
+            .success-icon {
+                font-size: 72px;
+                margin-bottom: 25px;
+            }
+            
+            .title {
+                font-size: 32px;
+                margin-bottom: 20px;
+            }
+            
+            .message {
+                font-size: 18px;
+                margin-bottom: 35px;
+            }
+            
+            .next-steps {
+                padding: 25px;
+                margin: 25px 0;
+            }
+            
+            .next-steps h3 {
+                font-size: 20px;
+                margin-bottom: 18px;
+            }
+            
+            .footer-links {
+                margin-top: 35px;
+                gap: 25px;
+            }
+            
+            .footer-link {
+                padding: 12px 24px;
+                font-size: 14px;
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .success-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+            animation: bounce 1s ease-out;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .message {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .next-steps {
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            text-align: left;
+            margin: 20px 0;
+        }
+
+        .next-steps h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .next-steps ul {
+            list-style: none;
+            color: #555;
+        }
+
+        .next-steps li {
+            margin: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .next-steps li:before {
+            content: "📧";
+            position: absolute;
+            left: 0;
+        }
+
+        .footer-links {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 16px;
+            border: 2px solid #667eea;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }        @media (max-width: 767px) {
+            body {
+                padding: 15px;
+            }
+            
+            .container {
+                padding: 25px 20px;
+                margin: 10px;
+                border-radius: 15px;
+            }
+            
+            .success-icon {
+                font-size: 56px;
+                margin-bottom: 18px;
+            }
+            
+            .title {
+                font-size: 24px;
+                margin-bottom: 15px;
+            }
+            
+            .message {
+                font-size: 15px;
+                margin-bottom: 25px;
+            }
+            
+            .next-steps {
+                padding: 18px;
+                margin: 18px 0;
+            }
+            
+            .next-steps h3 {
+                font-size: 16px;
+                margin-bottom: 12px;
+            }
+            
+            .next-steps li {
+                font-size: 14px;
+                margin: 6px 0;
+            }
+            
+            .footer-links {
+                margin-top: 25px;
+                gap: 15px;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footer-link {
+                padding: 10px 20px;
+                font-size: 13px;
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-icon">🎉</div>
+        <div class="title">Welcome to AI Newsletter!</div>
+        <div class="message">
+            You've successfully subscribed to our daily AI & tech newsletter. 
+            Thank you for joining our community of AI enthusiasts!
+        </div>
+
+        <div class="next-steps">
+            <h3>What happens next:</h3>
+            <ul>
+                <li>You'll receive your first newsletter tomorrow morning at 9 AM</li>
+                <li>Each newsletter contains the top 5 AI & tech stories</li>
+                <li>All summaries are AI-curated for quick, informative reading</li>
+                <li>You can unsubscribe anytime with one click</li>
+            </ul>
+        </div>
+
+        <div class="footer-links">
+            <a href="mailto:parthparmar4105@gmail.com" class="footer-link">Contact</a>
+            <a href="https://www.linkedin.com/in/parthparmar04/" class="footer-link" target="_blank">LinkedIn</a>
+            <a href="https://parth-parmar-portfolio.onrender.com/" class="footer-link" target="_blank">Portfolio</a>
+        </div>
+    </div>
+</body>
+</html>

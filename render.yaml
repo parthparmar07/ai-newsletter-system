@@ -1,0 +1,45 @@
+services:
+  # Newsletter Viewer App (Registration Required)
+  - type: web
+    name: newsletter-viewer
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python newsletter_viewer.py
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: newsletter-db
+          property: connectionString
+    domains:
+      - newsletter-viewer.onrender.com
+
+  # Subscription App (Email Collection)
+  - type: web
+    name: newsletter-subscription
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python subscription_app.py
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: SECRET_KEY
+        generateValue: true
+      - key: EMAIL_USER
+        sync: false
+      - key: EMAIL_PASS
+        sync: false
+      - key: DATABASE_URL
+        fromDatabase:
+          name: newsletter-db
+          property: connectionString
+    domains:
+      - newsletter-subscribe.onrender.com
+
+databases:
+  - name: newsletter-db
+    databaseName: newsletter_production
+    user: newsletter_user
