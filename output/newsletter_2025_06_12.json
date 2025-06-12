@@ -1,0 +1,42 @@
+{
+  "subject": "AI Newsletter - June 12, 2025",
+  "date": "June 12, 2025",
+  "intro": "Welcome to today's AI Newsletter! Here are the most important developments in AI and technology for June 12, 2025.",
+  "articles": [
+    {
+      "title": "GPT-4 Advances in Code Generation",
+      "summary": "Latest improvements in AI-powered code generation are revolutionizing software development. New models show 40% better accuracy in complex programming tasks.",
+      "source": "AI Research",
+      "importance_score": 9.2,
+      "url": "https://example.com/gpt4-advances"
+    },
+    {
+      "title": "Breakthrough in Autonomous Vehicle Navigation",
+      "summary": "New AI algorithms enable self-driving cars to navigate complex urban environments with 99.7% accuracy, marking a significant step toward full autonomy.",
+      "source": "Tech News",
+      "importance_score": 8.8,
+      "url": "https://example.com/autonomous-vehicles"
+    },
+    {
+      "title": "AI in Healthcare: Diagnostic Revolution",
+      "summary": "Machine learning models now outperform human doctors in early cancer detection, with 95% accuracy in identifying malignant tumors from medical imaging.",
+      "source": "Medical AI",
+      "importance_score": 9.5,
+      "url": "https://example.com/ai-healthcare"
+    },
+    {
+      "title": "Quantum Computing Meets Machine Learning",
+      "summary": "Researchers demonstrate quantum advantage in machine learning tasks, achieving 1000x speedup in specific optimization problems.",
+      "source": "Quantum AI",
+      "importance_score": 8.5,
+      "url": "https://example.com/quantum-ml"
+    },
+    {
+      "title": "Natural Language Processing Breakthrough",
+      "summary": "New transformer architecture enables real-time translation between 100+ languages with human-level accuracy, breaking down global communication barriers.",
+      "source": "NLP Research",
+      "importance_score": 8.9,
+      "url": "https://example.com/nlp-breakthrough"
+    }
+  ]
+}
