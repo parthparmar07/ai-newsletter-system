@@ -64,7 +64,7 @@ def is_valid_email(email):
     return re.match(pattern, email) is not None
 
 def register_user(email, name=None):
-    """Register a new user."""
+    """Register a new user or update existing user."""
     if not is_valid_email(email):
         return False, "Invalid email format"
     
@@ -72,6 +72,27 @@ def register_user(email, name=None):
         conn = sqlite3.connect(DB_PATH)
         cursor = conn.cursor()
         
+        # Check if user already exists
+        cursor.execute('SELECT id, access_token, name FROM users WHERE email = ?', (email.lower().strip(),))
+        existing_user = cursor.fetchone()
+        
+        if existing_user:
+            # User exists - update their info and return their data
+            user_id, access_token, existing_name = existing_user
+            
+            # Update name if provided and different
+            if name and name != existing_name:
+                cursor.execute('UPDATE users SET name = ?, last_login = ? WHERE id = ?', 
+                             (name, datetime.now().isoformat(), user_id))
+            else:
+                cursor.execute('UPDATE users SET last_login = ? WHERE id = ?', 
+                             (datetime.now().isoformat(), user_id))
+            
+            conn.commit()
+            conn.close()
+            return True, {"user_id": user_id, "access_token": access_token, "returning_user": True}
+        
+        # New user - create account
         access_token = secrets.token_urlsafe(32)
         
         cursor.execute('''
@@ -160,7 +181,7 @@ def index():
 
 @app.route('/register', methods=['POST'])
 def register():
-    """Handle user registration."""
+    """Handle user registration and login."""
     email = request.form.get('email', '').strip()
     name = request.form.get('name', '').strip()
     
@@ -174,7 +195,12 @@ def register():
         session['user_id'] = result['user_id']
         session['access_token'] = result['access_token']
         session['email'] = email
-        flash(f'Welcome {name or email}! Registration successful.', 'success')
+        
+        if result.get('returning_user'):
+            flash(f'Welcome back {name or email}!', 'success')
+        else:
+            flash(f'Welcome {name or email}! Registration successful.', 'success')
+            
         return redirect(url_for('newsletter_list'))
     else:
         flash(result, 'error')

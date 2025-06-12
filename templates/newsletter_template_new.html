@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ newsletter.subject }}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 650px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .date-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .intro {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            font-size: 16px;
+            line-height: 1.7;
+            box-shadow: 0 8px 25px rgba(240, 147, 251, 0.3);
+        }
+        
+        .intro::before {
+            content: '🚀';
+            font-size: 24px;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin: 40px 0 25px 0;
+            padding-bottom: 15px;
+            border-bottom: 3px solid transparent;
+            background: linear-gradient(90deg, #667eea, #764ba2) bottom/100% 3px no-repeat;
+        }
+        
+        .section-header::before {
+            content: '🔥';
+            font-size: 28px;
+            margin-right: 12px;
+        }
+        
+        .stats-bar {
+            background: #f8f9fa;
+            margin: 40px -30px;
+            padding: 25px 30px;
+            text-align: center;
+            border-top: 1px solid #e9ecef;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .stats-item {
+            display: inline-block;
+            margin: 0 20px;
+            color: #6c757d;
+            font-size: 14px;
+        }
+        
+        .stats-number {
+            display: block;
+            font-size: 24px;
+            font-weight: 700;
+            color: #667eea;
+        }
+        
+        .articles-grid {
+            display: grid;
+            gap: 25px;
+        }
+        
+        .article {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            position: relative;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+            overflow: hidden;
+        }
+        
+        .article::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+        
+        .article:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+            background: #ffffff;
+        }
+        
+        .article-rank {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4);
+        }
+        
+        .article-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        
+        .article-title a {
+            color: #2c3e50;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .article-title a:hover {
+            color: #667eea;
+        }
+        
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 13px;
+            color: #7f8c8d;
+        }
+        
+        .source-badge {
+            background: #e9ecef;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-weight: 600;
+            color: #495057;
+        }
+        
+        .importance-score {
+            background: linear-gradient(135deg, #56ab2f, #a8e6cf);
+            color: #2c3e50;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-weight: 700;
+            font-size: 12px;
+        }
+        
+        .article-summary {
+            color: #5a6c7d;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+        
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .creator-info {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .creator-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .creator-name {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .creator-title {
+            color: #bdc3c7;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .creator-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-link {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            text-align: center;
+            line-height: 40px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+        
+        .footer-note {
+            font-size: 12px;
+            color: #95a5a6;
+            line-height: 1.6;
+        }
+        
+        .ai-badge {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        
+        .ai-badge::before {
+            content: '🤖';
+            margin-right: 5px;
+        }
+        
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 26px;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .article {
+                padding: 20px;
+            }
+            
+            .stats-bar {
+                margin: 30px -20px;
+                padding: 20px;
+            }
+            
+            .stats-item {
+                display: block;
+                margin: 10px 0;
+            }
+            
+            .footer {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <h1>{{ config.NEWSLETTER_NAME }}</h1>
+                <div class="subtitle">Your Daily AI Intelligence Brief</div>
+                <div class="date-badge">{{ newsletter.date.strftime('%B %d, %Y') }}</div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="intro">
+                {{ newsletter.intro }}
+            </div>
+            
+            <div class="stats-bar">
+                <div class="stats-item">
+                    <span class="stats-number">{{ newsletter.articles|length }}</span>
+                    Curated Articles
+                </div>
+                <div class="stats-item">
+                    <span class="stats-number">{% if newsletter.articles %}{{ (newsletter.articles|map(attribute='importance_score')|sum / newsletter.articles|length)|round(1) }}{% else %}0{% endif %}</span>
+                    Avg. Importance
+                </div>
+                <div class="stats-item">
+                    <span class="stats-number">{% if newsletter.articles %}{{ newsletter.articles|selectattr('source')|map(attribute='source')|unique|list|length }}{% else %}0{% endif %}</span>
+                    Sources
+                </div>
+            </div>
+            
+            <div class="section-header">Top 5 AI Stories Today</div>
+            
+            <div class="articles-grid">
+                {% for article in newsletter.articles[:5] %}
+                <div class="article">
+                    <div class="article-rank">{{ loop.index }}</div>
+                    <div class="article-title">
+                        <a href="{{ article.url }}" target="_blank">{{ article.title }}</a>
+                    </div>
+                    <div class="article-meta">
+                        <span class="source-badge">{{ article.source }}</span>
+                        <span>{{ article.published_date.strftime('%b %d, %Y') }}</span>
+                        <span class="importance-score">Score: {{ "%.1f"|format(article.importance_score) }}</span>
+                    </div>
+                    <div class="article-summary">
+                        {{ article.ai_summary }}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="creator-info">
+                <div class="creator-avatar">{{ config.SENDER_NAME[0] if config.SENDER_NAME else 'P' }}</div>
+                <div class="creator-name">{{ config.SENDER_NAME or 'Parth Parmar' }}</div>
+                <div class="creator-title">AI Newsletter Creator & Curator</div>
+                <div style="margin-top: 15px; color: #bdc3c7; font-size: 14px;">
+                    Passionate about bringing you the latest in AI innovation and technology
+                </div>
+                <div class="creator-links">
+                    <a href="mailto:{{ config.EMAIL_ADDRESS }}" class="social-link" title="Email">✉️</a>
+                    <a href="#" class="social-link" title="LinkedIn">💼</a>
+                    <a href="#" class="social-link" title="Twitter">🐦</a>
+                    <a href="#" class="social-link" title="GitHub">💻</a>
+                </div>
+            </div>
+            
+            <div style="margin-bottom: 20px; color: #95a5a6;">
+                {{ newsletter.outro }}
+            </div>
+            
+            <div class="ai-badge">
+                Powered by Advanced AI Curation
+            </div>
+            
+            <div class="footer-note">
+                <p style="margin: 15px 0;">
+                    <strong>{{ config.NEWSLETTER_NAME }}</strong> • 
+                    Delivered by {{ config.SENDER_NAME or 'Parth Parmar' }} • 
+                    <a href="mailto:{{ config.EMAIL_ADDRESS }}" style="color: #95a5a6;">Contact</a>
+                </p>
+                <p style="margin: 10px 0; font-size: 11px;">
+                    This newsletter uses artificial intelligence to curate and summarize the most important AI developments.<br>
+                    Each article is scored for relevance and importance, then summarized for maximum insight.
+                </p>
+                <p style="margin: 10px 0; font-size: 11px; color: #7f8c8d;">
+                    Want to unsubscribe? Reply to this email with "unsubscribe" in the subject line.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

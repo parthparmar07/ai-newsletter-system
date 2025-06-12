@@ -9,7 +9,6 @@ import os
 from datetime import datetime
 from typing import List, Tuple
 import logging
-from config import EMAIL_ADDRESS, EMAIL_PASSWORD
 
 logger = logging.getLogger(__name__)
 
@@ -17,8 +16,9 @@ class EmailManager:
     """Manages email sending for newsletter distribution."""
     
     def __init__(self):
-        self.sender_email = EMAIL_ADDRESS
-        self.sender_password = EMAIL_PASSWORD
+        # Use environment variables directly for better production support
+        self.sender_email = os.getenv('EMAIL_USER') or os.getenv('EMAIL_ADDRESS')
+        self.sender_password = os.getenv('EMAIL_PASS') or os.getenv('EMAIL_PASSWORD')
         self.db_path = 'subscribers.db'
         
     def get_active_subscribers(self) -> List[str]:
